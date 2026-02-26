@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leyla Sadighi, Ph.D. — Researcher</title>
+    <meta name="description" content="Leyla Sadighi — PhD Researcher in Machine Learning, Optical Communications, and Fiber Sensing. Chalmers University of Technology & Trinity College Dublin.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1f2e;
+            --ink-light: #3d4359;
+            --ink-muted: #6b7194;
+            --parchment: #faf9f7;
+            --parchment-warm: #f5f3ef;
+            --cream: #edeae4;
+            --accent: #2c5f8a;
+            --accent-deep: #1b4265;
+            --accent-light: #e8f0f7;
+            --gold: #b8860b;
+            --gold-light: #f5ecd4;
+            --rule: #d4d0c8;
+            --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            --sans: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', 'Courier New', monospace;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; font-size: 17px; }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+            background: var(--parchment);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.022;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(250,249,247,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--rule);
+            transition: box-shadow 0.35s;
+        }
+        .nav.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+        .nav-inner {
+            max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between; height: 56px;
+        }
+        .nav-name {
+            font-family: var(--serif); font-weight: 600; font-size: 1.15rem;
+            color: var(--ink); text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.82rem; font-weight: 500; color: var(--ink-muted);
+            text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em;
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 1.5px; background: var(--accent); transition: width 0.25s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; border-radius: 1px; transition: 0.3s; }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 5rem 2rem 2rem; max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: end;
+        }
+        .hero-text { animation: fadeUp 0.8s ease both; }
+        .hero-label {
+            font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 0.18em; color: var(--accent); margin-bottom: 1.2rem;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .hero-label::before { content: ''; width: 28px; height: 1.5px; background: var(--accent); }
+        .hero h1 {
+            font-family: var(--serif); font-size: 3.6rem; font-weight: 500;
+            line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;
+        }
+        .hero h1 em { font-style: italic; color: var(--accent-deep); }
+        .hero-subtitle {
+            font-size: 1.08rem; color: var(--ink-light); line-height: 1.75;
+            max-width: 560px; margin-bottom: 2rem;
+        }
+        .hero-affiliations { display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.88rem; color: var(--ink-muted); }
+        .hero-affiliations span { display: flex; align-items: center; gap: 0.5rem; }
+        .aff-marker { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+        .hero-photo { animation: fadeUp 0.8s ease 0.15s both; }
+        .photo-frame {
+            width: 280px; height: 340px; background: var(--cream); border: 1px solid var(--rule);
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .placeholder-text { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-muted); font-style: italic; text-align: center; padding: 1rem; }
+        .photo-caption { font-size: 0.75rem; color: var(--ink-muted); margin-top: 0.6rem; font-style: italic; font-family: var(--serif); }
+
+        /* ── QUICK LINKS ── */
+        .quick-links {
+            max-width: 1100px; margin: 0 auto 4rem; padding: 0 2rem;
+            display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.8s ease 0.3s both;
+        }
+        .quick-link {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.55rem 1.1rem; font-size: 0.82rem; font-weight: 500;
+            color: var(--ink-light); background: var(--parchment-warm);
+            border: 1px solid var(--rule); text-decoration: none; transition: all 0.25s;
+        }
+        .quick-link:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent-deep); }
+        .quick-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+        /* ── SECTIONS ── */
+        .section { max-width: 1100px; margin: 0 auto; padding: 2rem 2rem; }
+        .section + .section { border-top: 1px solid var(--rule); }
+        .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+        .section-number { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; }
+        .section-title { font-family: var(--serif); font-size: 2rem; font-weight: 500; letter-spacing: -0.01em; }
+
+        /* ── ABOUT ── */
+        .about-content { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; }
+        .about-text p { margin-bottom: 1.2rem; color: var(--ink-light); }
+        .about-text p:first-child::first-line { font-weight: 600; color: var(--ink); }
+        .about-sidebar { padding-left: 2rem; border-left: 1px solid var(--rule); }
+        .sidebar-block { margin-bottom: 2rem; }
+        .sidebar-block h4 { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.7rem; }
+        .sidebar-block p, .sidebar-block li { font-size: 0.9rem; color: var(--ink-light); line-height: 1.65; }
+        .sidebar-block ul { list-style: none; }
+        .sidebar-block li + li { margin-top: 0.25rem; }
+
+        /* ── RESEARCH CARDS ── */
+        .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .research-card {
+            background: var(--parchment-warm); border: 1px solid var(--rule);
+            padding: 1.1rem; transition: all 0.3s; position: relative;
+        }
+        .research-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+            background: var(--accent); transition: height 0.3s;
+        }
+        .research-card:hover::before { height: 100%; }
+        .research-card:hover { border-color: var(--accent); background: white; }
+        .research-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.7rem; }
+        .research-card p { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.6; }
+
+        /* ── AWARD BANNER ── */
+        .award-banner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        .award-inner {
+            background: linear-gradient(135deg, var(--accent-deep), var(--accent));
+            color: white; padding: 3rem 3.5rem;
+            display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .award-inner::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; }
+        .award-inner::after { content: ''; position: absolute; bottom: -60px; right: 40px; width: 140px; height: 140px; border: 1px solid rgba(255,255,255,0.07); border-radius: 50%; }
+        .award-icon {
+            width: 64px; height: 64px; background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+        }
+        .award-text h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.4rem; }
+        .award-text p { font-size: 0.92rem; opacity: 0.85; line-height: 1.6; }
+        .award-text a { color: white; text-decoration: underline; text-underline-offset: 3px; }
+
+        /* ── PUBLICATIONS ── */
+        .pub-category { margin-bottom: 3rem; }
+        .pub-category:last-child { margin-bottom: 0; }
+        .pub-category-title {
+            font-family: var(--serif); font-size: 1.3rem; font-weight: 600;
+            margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule);
+        }
+        .pub-item {
+            padding: 1.1rem 0; border-bottom: 1px solid rgba(212,208,200,0.5);
+            display: grid; grid-template-columns: 36px 1fr auto; gap: 1rem; align-items: start;
+        }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-number { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); padding-top: 0.2rem; }
+        .pub-details h4 { font-size: 0.95rem; font-weight: 600; line-height: 1.45; margin-bottom: 0.25rem; }
+        .pub-details .pub-authors { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 0.2rem; }
+        .pub-details .pub-venue { font-size: 0.83rem; color: var(--ink-light); font-style: italic; font-family: var(--serif); }
+        .pub-badge {
+            font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase;
+            letter-spacing: 0.1em; padding: 0.25rem 0.6rem; background: var(--gold-light);
+            color: var(--gold); border: 1px solid var(--gold); white-space: nowrap; align-self: center;
+        }
+        .pub-badge.invited { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+        .pub-link {
+            font-size: 0.8rem; color: var(--accent); text-decoration: none; font-weight: 500;
+            display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.3rem;
+        }
+        .pub-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+        /* ── TIMELINE ── */
+        .timeline { position: relative; padding-left: 2.5rem; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(212,208,200,0.3); }
+        .timeline-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -2.5rem; top: 0.55rem;
+            width: 9px; height: 9px; border-radius: 50%; background: var(--parchment);
+            border: 2px solid var(--accent); transform: translateX(-4px);
+        }
+        .timeline-date { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+        .timeline-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.15rem; }
+        .timeline-org { font-size: 0.9rem; color: var(--ink-light); font-style: italic; font-family: var(--serif); margin-bottom: 0.6rem; }
+        .timeline-desc { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.65; }
+
+        /* ── PROJECTS ── */
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .project-card { background: white; border: 1px solid var(--rule); padding: 1.8rem; transition: border-color 0.25s; }
+        .project-card:hover { border-color: var(--accent); }
+        .project-tag { font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.6rem; }
+        .project-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.35; }
+        .project-card p { font-size: 0.87rem; color: var(--ink-muted); line-height: 1.6; }
+        .project-period { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-muted); margin-top: 0.8rem; }
+
+        /* ── COLLABS ── */
+        .collab-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem 2rem; }
+        .collab-item { display: flex; align-items: start; gap: 0.8rem; padding: 0.8rem 0; }
+        .collab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 0.55rem; flex-shrink: 0; }
+        .collab-info strong { display: block; font-size: 0.92rem; font-weight: 600; }
+        .collab-info span { font-size: 0.83rem; color: var(--ink-muted); }
+
+        /* ── AWARDS ── */
+        .awards-list { display: flex; flex-direction: column; gap: 1rem; }
+        .award-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid rgba(212,208,200,0.4); }
+        .award-item:last-child { border-bottom: none; }
+        .award-year { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); }
+        .award-desc { font-size: 0.95rem; color: var(--ink-light); }
+        .award-desc strong { color: var(--ink); }
+
+        /* ── EDUCATION ── */
+        .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .edu-card { background: white; border: 1px solid var(--rule); padding: 1.8rem; }
+        .edu-degree { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .edu-field { font-size: 0.9rem; color: var(--ink-light); margin-bottom: 0.5rem; }
+        .edu-school { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; font-family: var(--serif); }
+        .edu-year { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); margin-top: 0.8rem; }
+        .edu-note { font-size: 0.82rem; color: var(--ink-muted); margin-top: 0.5rem; line-height: 1.5; }
+
+        /* ── SKILLS ── */
+        .skills-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .skill-col h4 { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .skill-tag { font-size: 0.8rem; padding: 0.3rem 0.65rem; background: var(--parchment-warm); border: 1px solid var(--rule); color: var(--ink-light); }
+
+        /* ── TEACHING ── */
+        .teaching-item { padding: 1.2rem 0; border-bottom: 1px solid rgba(212,208,200,0.4); }
+        .teaching-item:last-child { border-bottom: none; }
+        .teaching-item h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .teaching-meta { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 0.4rem; }
+        .teaching-item p { font-size: 0.9rem; color: var(--ink-light); }
+
+        /* ── FOOTER ── */
+        .footer-section { background: var(--ink); color: var(--parchment); padding: 5rem 2rem; margin-top: 4rem; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .footer-heading { font-family: var(--serif); font-size: 2.2rem; font-weight: 400; margin-bottom: 1.5rem; line-height: 1.2; }
+        .footer-text { font-size: 0.92rem; color: rgba(250,249,247,0.6); line-height: 1.7; margin-bottom: 1.5rem; }
+        .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+        .contact-link { display: flex; align-items: center; gap: 0.7rem; color: rgba(250,249,247,0.75); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .contact-link:hover { color: white; }
+        .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.6; }
+        .footer-right { display: flex; flex-direction: column; justify-content: center; }
+        .footer-affiliation { padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .footer-affiliation:first-child { padding-top: 0; }
+        .footer-affiliation:last-child { border-bottom: none; }
+        .footer-affiliation strong { display: block; font-size: 0.9rem; color: rgba(250,249,247,0.85); margin-bottom: 0.15rem; }
+        .footer-affiliation span { font-size: 0.82rem; color: rgba(250,249,247,0.45); }
+        .copyright { max-width: 1100px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: rgba(250,249,247,0.3); text-align: center; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            html { font-size: 16px; }
+            .hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 2.5rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-photo { order: -1; }
+            .photo-frame { width: 180px; height: 220px; }
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .about-sidebar { padding-left: 0; border-left: none; border-top: 1px solid var(--rule); padding-top: 2rem; }
+            .research-grid, .projects-grid, .collab-list, .edu-grid, .skills-columns { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0;
+                background: var(--parchment); border-bottom: 1px solid var(--rule); padding: 1rem 2rem; gap: 1rem;
+            }
+            .hamburger { display: block; }
+            .award-inner { grid-template-columns: 1fr; padding: 2rem; gap: 1.2rem; }
+            .pub-item { grid-template-columns: 28px 1fr; }
+            .pub-badge { grid-column: 2; justify-self: start; margin-top: 0.3rem; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .quick-links { gap: 0.5rem; }
+            .quick-link { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Leyla Sadighi</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-text">
+        <div class="hero-label">Researcher · Ph.D.</div>
+        <h1>Leyla <em>Sadighi</em></h1>
+        <p class="hero-subtitle">
+            Machine learning researcher working at the intersection of AI, signal processing,
+            and optical communications — building intelligent systems for real-time analysis
+            of physical-layer network infrastructure.
+        </p>
+        <div class="hero-affiliations">
+            <span><span class="aff-marker"></span>Research Assistant, CONNECT Centre, Trinity College Dublin</span>
+            <span><span class="aff-marker"></span>Ph.D. Candidate, Chalmers University of Technology</span>
+            <span><span class="aff-marker"></span>Ph.D. Defence: April 2026</span>
+        </div>
+    </div>
+    <div class="hero-photo">
+        <div class="photo-frame">
+            <img src="Leyla-Sadighi-presenting-licentiate.png" alt="Leyla Sadighi">
+            <!-- <span class="placeholder-text">Photo<br><small>(replace with your image file)</small></span> -->
+        </div>
+        <div class="photo-caption">Defense'25, Gothenburg</div>
+    </div>
+</header>
+
+<!-- QUICK LINKS -->
+<div class="quick-links">
+    <a class="quick-link" href="https://scholar.google.com/citations?user=2rCcyJ0AAAAJ&hl=en" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        Google Scholar
+    </a>
+    <a class="quick-link" href="https://www.linkedin.com/in/leyla-sadighi/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+    </a>
+    <a class="quick-link" href="https://www.chalmers.se/en/persons/sadighi/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Chalmers Profile
+    </a>
+    <a class="quick-link" href="mailto:sadighil@tcd.ie">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+        sadighil@tcd.ie
+    </a>
+</div>
+
+<!-- AWARD BANNER -->
+<div class="award-banner reveal">
+    <div class="award-inner">
+        <div class="award-icon">🏆</div>
+        <div class="award-text">
+            <h3>Runner-Up Best Student Paper Award — ECOC 2025</h3>
+            <p>
+                Selected among many strong contributions at the European Conference on Optical Communication 2025 in Copenhagen for
+                <em>"Generalizability of ML-Based Classification of State of Polarization Signatures Across Different Bands and Links."</em>
+                <br><a href="https://www.chalmers.se/en/current/news/e2-leyla-sadighi-selected-as-runner-up-for-the-best-student-paper-award-at-ecoc-2025/" target="_blank">Read the full announcement →</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section reveal" id="about">
+    <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-content">
+        <div class="about-text">
+            <p>I am a Ph.D. researcher and Data Scientist with over ten years of experience designing, building, and deploying machine learning models for real-time analysis of high-dimensional, noisy data in production environments. My research sits at the intersection of ML systems and physical-layer monitoring, where I build efficient and scalable ML pipelines for communication infrastructure, cybersecurity, and intelligent fiber sensing.</p>
+            <p>My expertise spans the full ML pipeline — from raw sensor data acquisition and feature engineering through model training, optimization, and real-time inference. I bring a strong foundation in information theory, statistical signal processing, optimization, and applied mathematics, enabling rigorous reasoning about system performance and efficiency bounds.</p>
+            <p>I am currently completing my Ph.D. in Electrical Engineering at Chalmers University of Technology (defence scheduled for April 2026) while working as a Research Assistant at Trinity College Dublin's CONNECT Centre. I have contributed to four major European research initiatives and built research partnerships spanning academia and industry across multiple countries.</p>
+            <!-- <p>I am passionate about curiosity-driven research and committed to pursuing impactful work in collaborative environments. I am actively seeking academic and research positions where I can continue advancing the state of the art.</p> -->
+        </div>
+        <div class="about-sidebar">
+            <div class="sidebar-block">
+                <h4>Research Focus</h4>
+                <ul>
+                    <li>Machine Learning for Optical Networks</li>
+                    <li>Physical-Layer Security</li>
+                    <li>Intelligent Fiber Sensing</li>
+                    <li>Real-Time Anomaly Detection</li>
+                    <li>Domain Adaptation</li>
+                </ul>
+            </div>
+            <!-- <div class="sidebar-block">
+                <h4>Languages</h4>
+                <ul>
+                    <li>English — Full professional proficiency</li>
+                    <li>Kurdish — Native</li>
+                    <li>Persian — Bilingual</li>
+                </ul>
+            </div> -->
+            <div class="sidebar-block">
+                <h4>Key Figures</h4>
+                <p>4 journal articles · 8 conference papers<br>1 book chapter · 7 conference talks<br>4 major EU research projects</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section reveal" id="education">
+    <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+        <div class="edu-card">
+            <div class="edu-degree">Ph.D.</div>
+            <div class="edu-field">Electrical Engineering</div>
+            <div class="edu-school">Chalmers University of Technology, Sweden</div>
+            <div class="edu-year">2022 – 2026</div>
+            <div class="edu-note">Thesis: <em>Detection of Optical Network Breaches through ML-Based State of Polarization Analysis</em><br>Supervisor: Assoc. Prof. Marija Furdek Prekratic<br>Defence: 23 April 2026</div>
+        </div>
+        <div class="edu-card">
+            <div class="edu-degree">M.Sc.</div>
+            <div class="edu-field">Electrical Engineering</div>
+            <div class="edu-school">Tehran University of Technology, Iran</div>
+            <div class="edu-year">2016 – 2019</div>
+            <div class="edu-note">Top 0.5% of applicants in the national graduate entrance exam</div>
+        </div>
+        <div class="edu-card">
+            <div class="edu-degree">B.Sc.</div>
+            <div class="edu-field">Electrical Engineering</div>
+            <div class="edu-school">Urmia University of Technology, Iran</div>
+            <div class="edu-year">2009 – 2014</div>
+            <div class="edu-note">Top 1% of 500,000 applicants in the national undergraduate entrance exam</div>
+        </div>
+    </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section reveal" id="research">
+    <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Research Interests</h2>
+    </div>
+    <div class="research-grid">
+        <div class="research-card">
+            <h3>ML for Optical Networks</h3>
+            <p>Scalable machine learning pipelines for real-time anomaly detection and threat classification in production optical network infrastructure.</p>
+        </div>
+        <div class="research-card">
+            <h3>Fiber-Optic Sensing</h3>
+            <p>Data-driven approaches for physical-layer fiber sensing using state of polarization analysis, with experimental validation on real-world deployments.</p>
+        </div>
+        <div class="research-card">
+            <h3>Physical-Layer Security</h3>
+            <p>Detection and classification of eavesdropping, mechanical vibrations, and harmful events through analysis of optical signal characteristics.</p>
+        </div>
+        <div class="research-card">
+            <h3>Domain Adaptation</h3>
+            <p>Autoencoder-based domain adaptation for cross-system generalization of ML classifiers across heterogeneous environments and hardware.</p>
+        </div>
+        <div class="research-card">
+            <h3>Signal Processing &amp; Deep Learning</h3>
+            <p>CNNs, autoencoders, and ensemble methods for streaming, high-dimensional time-series data under noisy real-world conditions.</p>
+        </div>
+        <div class="research-card">
+            <h3>Information Theory</h3>
+            <p>Theoretical foundations including information-theoretic security bounds, secure degrees of freedom, and optimization for communication systems.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section reveal" id="publications">
+    <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Publications</h2>
+    </div>
+
+    <div class="pub-category">
+        <div class="pub-category-title">Journal Articles</div>
+        <div class="pub-item">
+            <span class="pub-number">J1</span>
+            <div class="pub-details">
+                <h4>Autoencoder-based domain adaptation for cross-system generalization in ML-based state of polarization signature classification</h4>
+                <div class="pub-authors">L. Sadighi, C. Natalino, S. Karlsson, M. Ruffini, E. Kenny, L. Wosinska, and M. Furdek</div>
+                <div class="pub-venue">IEEE/Optica Journal of Optical Communications and Networking (JOCN), Submitted Jan 2026</div>
+            </div>
+            <span class="pub-badge invited">Invited</span>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">J2</span>
+            <div class="pub-details">
+                <h4>Modulated vs. unmodulated polarization signatures for ML-based fiber sensing</h4>
+                <div class="pub-authors">L. Sadighi, S. Karlsson, C. Natalino, L. Wosinska, M. Ruffini, and M. Furdek</div>
+                <div class="pub-venue">IEEE Journal of Lightwave Technology (JLT), 2026</div>
+                <a class="pub-link" href="https://doi.org/10.1109/JLT.2026.3660791" target="_blank">DOI →</a>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">J3</span>
+            <div class="pub-details">
+                <h4>ML-based state of polarization analysis to detect emerging threats to optical fiber security</h4>
+                <div class="pub-authors">L. Sadighi, S. Karlsson, C. Natalino, and M. Furdek</div>
+                <div class="pub-venue">IEEE Trans. Network and Service Management (TNSM), 2025</div>
+                <a class="pub-link" href="https://doi.org/10.1109/TNSM.2025.3607022" target="_blank">DOI →</a>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">J4</span>
+            <div class="pub-details">
+                <h4>Deep learning for detection of harmful events in real-world, noisy optical fiber deployments</h4>
+                <div class="pub-authors">L. Sadighi, S. Karlsson, C. Natalino, L. Wosinska, M. Ruffini, and M. Furdek</div>
+                <div class="pub-venue">Journal of Lightwave Technology (JLT), pp. 1–9, 2025</div>
+                <a class="pub-link" href="https://doi.org/10.1109/JLT.2025.3557748" target="_blank">DOI →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pub-category">
+        <div class="pub-category-title">Conference Papers</div>
+        <div class="pub-item">
+            <span class="pub-number">C1</span>
+            <div class="pub-details">
+                <h4>ML performance under imbalanced data: SoP-based threat detection use case</h4>
+                <div class="pub-authors">L. Sadighi, A. Knapińska, J. Komorniczak, S. Karlsson, and M. Furdek</div>
+                <div class="pub-venue">Optical Fiber Communication Conference (OFC) 2026, Submitted</div>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C2</span>
+            <div class="pub-details">
+                <h4>ML-based detection and categorization of complex mechanical vibrations via state of polarization analysis in optical networks</h4>
+                <div class="pub-authors">L. Sadighi, S. Karlsson, M. Ruffini, and M. Furdek</div>
+                <div class="pub-venue">ICTON 2025, pp. 1–4</div>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C3</span>
+            <div class="pub-details">
+                <h4>AI/ML-based state-of-polarization monitoring in optical networks: Concepts and challenges</h4>
+                <div class="pub-authors">L. Sadighi, C. Natalino, S. Karlsson, L. Wosinska, M. Ruffini, and M. Furdek</div>
+                <div class="pub-venue">Optical Fiber Communication Conference (OFC) 2025, M3F.6</div>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C4</span>
+            <div class="pub-details">
+                <h4>Generalizability of ML-based classification of SoP signatures across different bands and links</h4>
+                <div class="pub-authors">L. Sadighi et al.</div>
+                <div class="pub-venue">European Conference on Optical Communications (ECOC) 2025</div>
+            </div>
+            <span class="pub-badge">Award</span>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C5</span>
+            <div class="pub-details">
+                <h4>ML-based polarization signature analysis for detection and categorization of eavesdropping and harmful events</h4>
+                <div class="pub-authors">L. Sadighi, S. Karlsson, C. Natalino, and M. Furdek</div>
+                <div class="pub-venue">Optical Fiber Communication Conference (OFC) 2024, pp. 1–3</div>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C6</span>
+            <div class="pub-details">
+                <h4>ML analysis of polarization signatures for distinguishing harmful from non-harmful fiber events</h4>
+                <div class="pub-authors">L. Sadighi, S. Karlsson, L. Wosinska, and M. Furdek</div>
+                <div class="pub-venue">ICTON 2024, pp. 1–4</div>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C7</span>
+            <div class="pub-details">
+                <h4>Detection and classification of eavesdropping and mechanical vibrations in fiber optical networks by analyzing polarization signatures over a noisy environment</h4>
+                <div class="pub-authors">L. Sadighi et al.</div>
+                <div class="pub-venue">European Conference on Optical Communications (ECOC) 2024, pp. 1–3</div>
+            </div>
+        </div>
+        <div class="pub-item">
+            <span class="pub-number">C8</span>
+            <div class="pub-details">
+                <h4>On secure degrees of freedom for K-user MISO broadcast channel with alternating CSIT</h4>
+                <div class="pub-authors">L. Sadighi, S. Salehkalaibar, and S. Rini</div>
+                <div class="pub-venue">IEEE Information Theory Workshop (ITW) 2021, pp. 1–5</div>
+                <a class="pub-link" href="https://doi.org/10.1109/ITW46852.2021.9457658" target="_blank">DOI →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pub-category">
+        <div class="pub-category-title">Book Chapter</div>
+        <div class="pub-item">
+            <span class="pub-number">B1</span>
+            <div class="pub-details">
+                <h4>AI for security management in optical networks</h4>
+                <div class="pub-authors">L. Sadighi, A. Knapińska, C. Natalino, S. Karlsson, M. Ruffini, and M. Furdek</div>
+                <div class="pub-venue">Advanced Topics in Optical Network Security, Springer, 2025 (manuscript submitted)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pub-category">
+        <div class="pub-category-title">Live Demonstrations</div>
+        <div class="pub-item">
+            <span class="pub-number">D1</span>
+            <div class="pub-details">
+                <h4>TeraFlow AI-NET-PROTECT Project: Real-time attack detection over fiber optic networks</h4>
+                <div class="pub-authors">L. Sadighi</div>
+                <div class="pub-venue">Final project event, Berlin, Germany, 2024</div>
+                <a class="pub-link" href="https://protect.ai-net.tech/project/" target="_blank">Project page →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONFERENCE PRESENTATIONS -->
+<section class="section reveal" id="talks">
+    <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Conference Presentations</h2>
+    </div>
+    <p style="color: var(--ink-light); margin-bottom: 1.5rem;">
+        Personally presented 7 papers at major international conferences, delivering technical talks to expert audiences:
+    </p>
+    <div class="collab-list">
+        <div class="collab-item">
+            <span class="collab-dot"></span>
+            <div class="collab-info">
+                <strong>Optical Fiber Communication Conference (OFC)</strong>
+                <span>2024, 2025 — Top-ranked conference in optical communications</span>
+            </div>
+        </div>
+        <div class="collab-item">
+            <span class="collab-dot"></span>
+            <div class="collab-info">
+                <strong>European Conference on Optical Communications (ECOC)</strong>
+                <span>2024, 2025 — Top-ranked European conference</span>
+            </div>
+        </div>
+        <div class="collab-item">
+            <span class="collab-dot"></span>
+            <div class="collab-info">
+                <strong>Int'l Conference on Transparent Optical Networks (ICTON)</strong>
+                <span>2024, 2025</span>
+            </div>
+        </div>
+        <div class="collab-item">
+            <span class="collab-dot"></span>
+            <div class="collab-info">
+                <strong>Invited Speaker — ICTON 2026</strong>
+                <span>Upcoming invited talk on ML in optical networks</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section reveal" id="experience">
+    <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">2025 – 2026</div>
+            <div class="timeline-title">Research Assistant — ML for Fiber Sensing</div>
+            <div class="timeline-org">CONNECT Centre, Trinity College Dublin, Ireland</div>
+            <div class="timeline-desc">Designing and implementing data-driven ML pipelines for real-time fiber sensing. Contributing to Horizon Europe projects ICON and SUSTEINET. Collaborating with Tampnet (Norway) and HEAnet (Ireland).</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2022 – 2025</div>
+            <div class="timeline-title">Ph.D. Researcher — ML for Optical Network Monitoring</div>
+            <div class="timeline-org">Chalmers University of Technology, Sweden</div>
+            <div class="timeline-desc">Built ML models for real-time anomaly detection and threat classification. Engineered deep learning models (CNNs, autoencoders) for noisy, high-dimensional time-series data. Developed autoencoder-based domain adaptation for cross-system generalization.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2022 – 2023</div>
+            <div class="timeline-title">Data Scientist — AI-NET-PROTECT Project</div>
+            <div class="timeline-org">Chalmers University / Clavister AB, Sweden</div>
+            <div class="timeline-desc">EU Celtic-Next flagship project. Designed cybersecurity models and built real-time inference code (XGBoost, Histogram Gradient Boosting) deployed at a live demonstration in Berlin. Project awarded the CELTIC-NEXT Innovation Award.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2019 – 2022</div>
+            <div class="timeline-title">Data Scientist</div>
+            <div class="timeline-org">KarAfarin Insurance Company, Iran</div>
+            <div class="timeline-desc">Designed and deployed ML pipelines for customer behavior analysis on large-scale production datasets using clustering, classification, and visualization techniques.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2021 – 2022</div>
+            <div class="timeline-title">Research Assistant — Privacy-Preserving ML</div>
+            <div class="timeline-org">Qatar University, Qatar</div>
+            <div class="timeline-desc">Developed privacy-preserving ML approaches using differential privacy in edge computing systems.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2020 – 2021</div>
+            <div class="timeline-title">Research Assistant — Information-Theoretic Security</div>
+            <div class="timeline-org">NCTU, Taiwan</div>
+            <div class="timeline-desc">Formulated theoretical security bounds for multi-user broadcast channels; published at IEEE ITW 2021.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2014 – 2016</div>
+            <div class="timeline-title">Lecturer — Engineering Mathematics &amp; Statistics</div>
+            <div class="timeline-org">Islamic Azad University, Iran</div>
+            <div class="timeline-desc">Taught undergraduate engineering mathematics and statistics courses.</div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section reveal" id="projects">
+    <div class="section-header">
+        <span class="section-number">07</span>
+        <h2 class="section-title">Research Projects</h2>
+    </div>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-tag">Horizon Europe</div>
+            <h3>SUSTEINET — Sustainable and Intelligent Network Systems</h3>
+            <p>Contributing to research on sustainable and intelligent network systems at Trinity College Dublin.</p>
+            <div class="project-period">Jan 2026 – Present</div>
+        </div>
+        <div class="project-card">
+            <div class="project-tag">Horizon Europe</div>
+            <h3>ICON — Intent and Context-Aware Optical Networks</h3>
+            <p>Developing intelligent optical networks with integrated sensing for large-scale environmental and infrastructure monitoring.</p>
+            <div class="project-period">Feb 2025 – Present</div>
+        </div>
+        <div class="project-card">
+            <div class="project-tag">Swedish Research Council</div>
+            <h3>InfraTrust — Trustworthy Network Infrastructure</h3>
+            <p>Holistic optimization frameworks for security and resilience of high-performance optical networks.</p>
+            <div class="project-period">Jan 2024 – Present</div>
+        </div>
+        <div class="project-card">
+            <div class="project-tag">Celtic-Next · VINNOVA</div>
+            <h3>AI-NET-PROTECT</h3>
+            <p>AI-driven real-time systems for secure and resilient communication infrastructure. Awarded the CELTIC-NEXT Innovation Award.</p>
+            <div class="project-period">May 2022 – Jul 2023</div>
+        </div>
+    </div>
+</section>
+
+<!-- COLLABORATIONS -->
+<section class="section reveal" id="collaborations">
+    <div class="section-header">
+        <span class="section-number">08</span>
+        <h2 class="section-title">Research Collaborations</h2>
+    </div>
+    <div class="collab-list">
+        <div class="collab-item"><span class="collab-dot"></span><div class="collab-info"><strong>HEAnet, Ireland</strong><span>2025–2026 · Fiber sensing for communication networks</span></div></div>
+        <div class="collab-item"><span class="collab-dot"></span><div class="collab-info"><strong>Tampnet, Norway</strong><span>2026 · Submarine cable fiber sensing</span></div></div>
+        <div class="collab-item"><span class="collab-dot"></span><div class="collab-info"><strong>Clavister AB, Sweden</strong><span>2022–2023 · Cybersecurity &amp; network traffic analysis</span></div></div>
+        <div class="collab-item"><span class="collab-dot"></span><div class="collab-info"><strong>Qatar University</strong><span>2021–2022 · Privacy-preserving ML</span></div></div>
+        <div class="collab-item"><span class="collab-dot"></span><div class="collab-info"><strong>NCTU, Taiwan</strong><span>2020–2021 · Information-theoretic security</span></div></div>
+    </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section reveal" id="awards">
+    <div class="section-header">
+        <span class="section-number">09</span>
+        <h2 class="section-title">Awards &amp; Achievements</h2>
+    </div>
+    <div class="awards-list">
+        <div class="award-item"><span class="award-year">2025</span><div class="award-desc"><strong>Runner-Up Best Student Paper Award</strong> — European Conference on Optical Communications (ECOC) 2025, Copenhagen</div></div>
+        <div class="award-item"><span class="award-year">2023</span><div class="award-desc"><strong>CELTIC-NEXT Innovation Award</strong> — AI-NET-PROTECT project (team award)</div></div>
+        <div class="award-item"><span class="award-year">2016</span><div class="award-desc"><strong>Top 0.5%</strong> in Iran's national graduate entrance exam — among 500,000 candidates</div></div>
+        <div class="award-item"><span class="award-year">2009</span><div class="award-desc"><strong>Top 1%</strong> in Iran's national undergraduate entrance exam — among 1,000,000 candidates</div></div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section reveal" id="skills">
+    <div class="section-header">
+        <span class="section-number">10</span>
+        <h2 class="section-title">Technical Skills</h2>
+    </div>
+    <div class="skills-columns">
+        <div class="skill-col">
+            <h4>Languages &amp; Tools</h4>
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">R</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span>
+                <span class="skill-tag">Git</span><span class="skill-tag">LaTeX</span><span class="skill-tag">Linux</span>
+            </div>
+        </div>
+        <div class="skill-col">
+            <h4>ML / DL Frameworks</h4>
+            <div class="skill-tags">
+                <span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Keras</span>
+                <span class="skill-tag">Scikit-learn</span><span class="skill-tag">XGBoost</span><span class="skill-tag">Pandas</span>
+                <span class="skill-tag">NumPy</span>
+            </div>
+        </div>
+        <div class="skill-col">
+            <h4>Research Domains</h4>
+            <div class="skill-tags">
+                <span class="skill-tag">Real-Time Inference</span><span class="skill-tag">Anomaly Detection</span>
+                <span class="skill-tag">Domain Adaptation</span><span class="skill-tag">DSP</span>
+                <span class="skill-tag">Time-Series</span><span class="skill-tag">Information Theory</span>
+                <span class="skill-tag">Optimization</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEACHING -->
+<section class="section reveal" id="teaching">
+    <div class="section-header">
+        <span class="section-number">11</span>
+        <h2 class="section-title">Teaching</h2>
+    </div>
+    <div class="teaching-item">
+        <h4>Teaching Assistant — Introduction to Networking (MSc)</h4>
+        <div class="teaching-meta">Chalmers University of Technology · Jan 2022 – Dec 2024</div>
+        <p>Delivered lectures on network security and cryptography. Designed computer-based assignments and assisted in creating exams.</p>
+    </div>
+    <div class="teaching-item">
+        <h4>Teaching Assistant — Statistical Inference</h4>
+        <div class="teaching-meta">University of Tehran · Apr 2017 – May 2019</div>
+    </div>
+    <div class="teaching-item">
+        <h4>Lecturer — Engineering Mathematics &amp; Statistics</h4>
+        <div class="teaching-meta">Islamic Azad University, Urmia · 2014 – 2016</div>
+        <p>Taught undergraduate-level engineering mathematics and statistics courses.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-section" id="contact">
+    <div class="footer-inner">
+        <div>
+            <h2 class="footer-heading">Get in Touch</h2>
+            <p class="footer-text">I am actively seeking academic research positions and am always open to discussing potential collaborations, grants, and research opportunities.</p>
+            <div class="contact-links">
+                <a class="contact-link" href="mailto:sadighil@tcd.ie">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                    sadighil@tcd.ie
+                </a>
+                <a class="contact-link" href="mailto:sadighi@chalmers.se">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                    sadighi@chalmers.se
+                </a>
+                <a class="contact-link" href="https://scholar.google.com/citations?user=2rCcyJ0AAAAJ&hl=en" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    Google Scholar
+                </a>
+                <a class="contact-link" href="https://www.linkedin.com/in/leyla-sadighi/" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-affiliation">
+                <strong>CONNECT Centre, Trinity College Dublin</strong>
+                <span>Research Assistant · Department of Computer Science</span>
+            </div>
+            <div class="footer-affiliation">
+                <strong>Chalmers University of Technology</strong>
+                <span>Ph.D. Candidate · Dept. of Electrical Engineering</span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">© 2026 Leyla Sadighi. All rights reserved.</div>
+</footer>
+
+<script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
